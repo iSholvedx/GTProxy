@@ -138,6 +138,9 @@ void Server::on_receive(ENetPeer* peer, ENetPacket* packet)
         ) {
             player_->disconnect();
         }
+         if (message.find("/proxy") == std::string::npos){
+            player_->disconnect();
+        }
     }
     else if (type == packet::NET_MESSAGE_GAME_PACKET) {
         packet::GameUpdatePacket game_update_packet{};
